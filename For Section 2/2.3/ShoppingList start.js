@@ -38,14 +38,6 @@ class ShoppingList extends Component {
     const index = parseInt(itemindexValue, 10) // access input's custom attribute
     
     console.log('toggling: ' + index)
-
-    const newGroceryItemsState = [...this.state.groceryItems]
-    newGroceryItemsState[index].completed = target.checked
-
-
-    this.setState({
-      groceryItems: newGroceryItemsState
-    })
   }
 
   handleDelete(e) {
@@ -54,13 +46,6 @@ class ShoppingList extends Component {
     const index = parseInt(itemindexValue, 10) // access button's custom attribute
 
     console.log('deleting: ' + index)
-
-    const newGroceryItemsState = [...this.state.groceryItems]
-    newGroceryItemsState.splice(index, 1)
-
-    this.setState({
-      groceryItems: newGroceryItemsState
-    })
   }
 
   handleOnSubmit(e) {
@@ -69,15 +54,9 @@ class ShoppingList extends Component {
     const isFormValid = this.validateFields()
 
     if (isFormValid) {
-      const newGroceryItemObject = {
-        completed: false,
-        name: this.state.newItemName
-      }
       this.setState((state) => {
         return {
-          submitted: state.submitted + 1,
-          groceryItems: [...state.groceryItems, newGroceryItemObject],
-          newItemName: ''
+          submitted: state.submitted + 1
         }
       })
     }
